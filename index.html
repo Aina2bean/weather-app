@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Maihama</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <h1>Weather Maihama</h1>
+        <div id="weather_now_area">
+            <dl>
+                <dt class="menu_title">本日の天候</dd>
+                <dd>
+                    <div id="weather_now"></div>
+                </dd>
+            </dl>
+        </div>
+        <div id="weather_1day_area">
+            <dl>
+                <dt class="menu_title">本日の最高気温・最低気温</dt>
+                <dd>
+                    <div id="weather_1day__temp_max"></div>
+                    <div id="weather_1day__temp_min"></div>
+                </dd>
+            </dl>
+        </div>
+        <div id="weather_weekly_area">
+            <dl>
+                <dt class="menu_title">週間天気予報</dt>
+                <dd>
+                    <div id="weather_weekly"></div>
+                </dd>
+            </dl>
+        </div>
+    </main>
+</body>
+<script src="./js/weather_info.js"></script>
+</html>

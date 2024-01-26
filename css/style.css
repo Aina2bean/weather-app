@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/IMG_8231.JPG);
+    background-size: cover;
+}
+
+main {
+    margin: 0 auto;
+    padding: 20px;
+    width: 920px;
+    font-family: 'Kosugi Maru', sans-serif;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+}
+
+.menu_title {
+    
+}
+
+#weather_1day_area #weather_1day__temp_max,
+#weather_1day_area #weather_1day__temp_min {
+    font-weight: bold;
+    font-size: 30px;
+}
+#weather_1day_area #weather_1day__temp_max {
+    color: #ca1114;
+}
+#weather_1day_area #weather_1day__temp_min {
+    color: #183087;
+}
