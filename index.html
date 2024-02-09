@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Maihama</title>
+    <title>Weather Appli</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,31 +11,46 @@
 </head>
 <body>
     <main>
-        <h1>Weather Maihama</h1>
-        <div id="weather_now_area">
-            <dl>
-                <dt class="menu_title">本日の天候</dd>
-                <dd>
-                    <div id="weather_now"></div>
-                </dd>
-            </dl>
+        <h1>Weather Appli</h1>
+        <div id="select_wrap">
+            <h2>地域の選択</h2>
+            <form id="map">
+                <div>
+                    <input type="radio" id="maihama" name="map" value="maihama">
+                    <label for="maihama">舞浜</label>
+                </div>
+                <div>
+                    <input type="radio" id="minatomirai" name="map" value="minatomirai">
+                    <label for="minatomirai">みなとみらい</label>
+                </div>
+            </form>
         </div>
-        <div id="weather_1day_area">
-            <dl>
-                <dt class="menu_title">本日の最高気温・最低気温</dt>
-                <dd>
-                    <div id="weather_1day__temp_max"></div>
-                    <div id="weather_1day__temp_min"></div>
-                </dd>
-            </dl>
-        </div>
-        <div id="weather_weekly_area">
-            <dl>
-                <dt class="menu_title">週間天気予報</dt>
-                <dd>
-                    <div id="weather_weekly"></div>
-                </dd>
-            </dl>
+        <div id="information_wrap">
+            <div id="weather_now_area">
+                <dl>
+                    <dt class="menu_title">本日の天候</dd>
+                    <dd>
+                        <div id="weather_now"></div>
+                    </dd>
+                </dl>
+            </div>
+            <div id="weather_1day_area">
+                <dl>
+                    <dt class="menu_title">本日の最高気温・最低気温</dt>
+                    <dd>
+                        <div id="weather_1day__temp_max"></div>
+                        <div id="weather_1day__temp_min"></div>
+                    </dd>
+                </dl>
+            </div>
+            <div id="weather_weekly_area">
+                <dl>
+                    <dt class="menu_title">週間天気予報</dt>
+                    <dd>
+                        <div id="weather_weekly"></div>
+                    </dd>
+                </dl>
+            </div>
         </div>
     </main>
 </body>

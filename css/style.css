@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+html {
+    font-size: 14px;
+}
+
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/IMG_8231.JPG);
     background-size: cover;
@@ -15,10 +19,6 @@ main {
     border-radius: 20px;
 }
 
-.menu_title {
-    
-}
-
 #weather_1day_area #weather_1day__temp_max,
 #weather_1day_area #weather_1day__temp_min {
     font-weight: bold;
@@ -29,4 +29,18 @@ main {
 }
 #weather_1day_area #weather_1day__temp_min {
     color: #183087;
+}
+
+#map input {
+    display: none;
+}
+
+#map label {
+    cursor: pointer;
+    padding: 10px;
+    background: #fff;
+    line-height: 2.5;
+}
+#map label:hover {
+    opacity: 0.5;
 }
