@@ -5,10 +5,10 @@ let temp_max = document.getElementById('weather_1day__temp_max'); // 最高気�
 let temp_min = document.getElementById('weather_1day__temp_min'); // 最低気温
 
 // constでは変数の宣言のみは出来ないのでletを使う。
-let request_api; // 読み込むAPI
+let url; // 読み込むAPI
 
 function requestAPI() {
-    fetch(request_api)
+    fetch(url)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -61,12 +61,6 @@ function requestAPI() {
             }
             weather_now.innerHTML = weather_code(today_weather);
 
-            // 高気温キャンセル危惧
-            // if(today_temp_max > 29){
-            //     cancel_risk_message = '気温が大変高いです。ショー・パレードが中止になる可能性がありますので、ご注意ください！';
-            //     temp_max.after(cancel_risk_message);
-            // }
-
             temp_max.innerHTML = today_temp_max + '℃';
             temp_min.innerHTML = today_temp_min + '℃';
 
@@ -79,6 +73,12 @@ function requestAPI() {
                 while(weekly_list.firstChild){
                     weekly_list.removeChild(weekly_list.firstChild);
                 }
+                for(let i = 1; i <= 5; i++){
+                    let weekly_element = document.createElement('div');
+                    let weekly_date = (today.getMonth() + 1) + '/' + (today.getDate() + i);
+                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + weekly_date + weather_code(weekly_temp_weather[i]) + '</div>';
+                    document.getElementById('weather_weekly').appendChild(weekly_element);
+                }
             } else {
                 for(let i = 1; i <= 5; i++){
                     let weekly_element = document.createElement('div');
@@ -90,20 +90,27 @@ function requestAPI() {
         });
 }
 
-// ラジオボタンの値を取得
-document.getElementById('map').addEventListener('click', function(){
-    const select_map = document.getElementById('map').map.value;
-    console.log(select_map);
-    switch(select_map){
-        case 'maihama':
-            request_api = 'https://api.open-meteo.com/v1/forecast?latitude=35.6328&longitude=139.8813&hourly=temperature_2m,rain,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo';
-            requestAPI();
-            break;
-        case 'minatomirai':
-            request_api = 'https://api.open-meteo.com/v1/forecast?latitude=35.4596&longitude=139.6303&hourly=temperature_2m,rain,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo';
-            requestAPI();
-            break;
-        default:
-            console.log('失敗しました。ブラウザを更新するなどして再度お試しください。');
-    }
-});
+// 押された地域を取得後、それぞれの地域のAPIを取ってきて画面上に出す。
+const select_button = document.querySelectorAll('button');
+for(let number = 0; number < select_button.length; number++){
+    select_button[number].addEventListener('click', function(e){
+        console.log(e.target.value);
+        const select_map = e.target.value;
+        switch(select_map){
+            case 'maihama':
+                url = 'https://api.open-meteo.com/v1/forecast?latitude=35.6328&longitude=139.8813&hourly=temperature_2m,rain,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo';
+                requestAPI();
+                break;
+            case 'minatomirai':
+                url = 'https://api.open-meteo.com/v1/forecast?latitude=35.4596&longitude=139.6303&hourly=temperature_2m,rain,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo';
+                requestAPI();
+                break;
+            case 'osaka':
+                url = 'https://api.open-meteo.com/v1/forecast?latitude=34.6937&longitude=135.5022&hourly=temperature_2m,rain,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo';
+                requestAPI();
+                break;
+            default:
+                console.log('失敗しました。ブラウザを更新するなどして再度お試しください。');
+        }
+    });
+}
