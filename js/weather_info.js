@@ -61,7 +61,9 @@ function requestAPI() {
                         return result_data = ['thunderstorm','雷雨'];
                 }
             }
-            document.getElementsByClassName('material-symbols-outlined')[0].innerHTML = weather_code(today_weather)[0];
+
+            let weather_today = weather_code(today_weather);
+            document.getElementsByClassName('material-symbols-outlined')[0].innerHTML = weather_today[0];
             temp_max.innerHTML = today_temp_max + '℃';
             temp_min.innerHTML = today_temp_min + '℃';
 
