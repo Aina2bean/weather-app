@@ -77,14 +77,16 @@ function requestAPI() {
                 for(let i = 1; i <= 5; i++){
                     let weekly_element = document.createElement('div');
                     let weekly_date = (today.getMonth() + 1) + '/' + (today.getDate() + i);
-                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + weekly_date + weather_code(weekly_temp_weather[i])[1] + '</div>';
+                    let weather_week = weather_code(weekly_temp_weather[i]);
+                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + weekly_date + weather_week[1] + '</div>';
                     document.getElementById('weather_weekly').appendChild(weekly_element);
                 }
             } else {
                 for(let i = 1; i <= 5; i++){
                     let weekly_element = document.createElement('div');
                     let weekly_date = (today.getMonth() + 1) + '/' + (today.getDate() + i);
-                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + weekly_date + weather_code(weekly_temp_weather[i])[1] + '</div>';
+                    let weather_week = weather_code(weekly_temp_weather[i]);
+                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + weekly_date + weather_week[1] + '</div>';
                     document.getElementById('weather_weekly').appendChild(weekly_element);
                 }
             }
