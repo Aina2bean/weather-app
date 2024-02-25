@@ -66,7 +66,7 @@ function requestAPI() {
             weather_today;
             console.log('今日の天気情報' + weather_today[0]);
             console.log('確認用', document.getElementsByClassName('material-symbols-outlined')[0]);
-            document.getElementsByClassName('material-symbols-outlined')[0].classList.add(weather_today[0]);
+            //document.getElementsByClassName('material-symbols-outlined')[0].classList.add(weather_today[0]);
             document.getElementsByClassName('material-symbols-outlined')[0].innerHTML = weather_today[0];
             temp_max.innerHTML = today_temp_max + '℃';
             temp_min.innerHTML = today_temp_min + '℃';
