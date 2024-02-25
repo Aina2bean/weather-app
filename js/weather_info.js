@@ -27,7 +27,7 @@ function requestAPI() {
                     case 1:
                     case 2:
                     case 3:
-                        return ['partly_cloudy_day','晴れ時々曇り'];
+                        return result_data = ['partly_cloudy_day','晴れ時々曇り'];
                     case 45:
                     case 48:
                         return result_data = ['foggy','霧'];
@@ -63,7 +63,9 @@ function requestAPI() {
             }
 
             let weather_today = weather_code(today_weather);
+            weather_today;
             console.log('今日の天気情報' + weather_today[0]);
+            console.log('確認用', document.getElementsByClassName('material-symbols-outlined')[0]);
             document.getElementsByClassName('material-symbols-outlined')[0].innerHTML = weather_today[0];
             temp_max.innerHTML = today_temp_max + '℃';
             temp_min.innerHTML = today_temp_min + '℃';
