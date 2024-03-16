@@ -62,12 +62,10 @@ function requestAPI() {
                 }
             }
 
-            let weather_today = weather_code(today_weather);
-            weather_today;
-            console.log('今日の天気情報' + weather_today[0]);
+            console.log('今日の天気情報' + weather_code(today_weather)[0]);
             console.log('確認用', document.getElementsByClassName('material-symbols-outlined')[0]);
             //document.getElementsByClassName('material-symbols-outlined')[0].classList.add(weather_today[0]);
-            document.getElementsByClassName('material-symbols-outlined')[0].innerHTML = weather_today[0];
+            document.getElementsByClassName('material-symbols-outlined')[0].innerHTML = weather_code(today_weather)[0];
             temp_max.innerHTML = today_temp_max + '℃';
             temp_min.innerHTML = today_temp_min + '℃';
 
@@ -81,18 +79,66 @@ function requestAPI() {
                     weekly_list.removeChild(weekly_list.firstChild);
                 }
                 for(let i = 1; i <= 5; i++){
-                    let weekly_element = document.createElement('div');
-                    let weekly_date = (today.getMonth() + 1) + '/' + (today.getDate() + i);
-                    let weather_week = weather_code(weekly_temp_weather[i]);
-                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + weekly_date + weather_week[1] + '</div>';
+                    const weekly_element = document.createElement('div');
+                    const next_day = new Date(today.getFullYear(),(today.getMonth()),(today.getDate() + i) );
+                    let weekly_day = next_day.getDay();
+                    switch(weekly_day){
+                            case 0:
+                                weekly_day = '日';
+                                break;
+                            case 1:
+                                weekly_day = '月';
+                                break;
+                            case 2:
+                                weekly_day = '火';
+                                break;
+                            case 3:
+                                weekly_day = '水';
+                                break;
+                            case 4:
+                                weekly_day = '木';
+                                break;
+                            case 5:
+                                weekly_day = '金';
+                                break;
+                            case 6:
+                                weekly_day = '土';
+                                break;
+                    }
+                    const weather_week = weather_code(weekly_temp_weather[i]);
+                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + (next_day.getMonth() + 1) + '月' + next_day.getDate() + '日（' + weekly_day + '）' + weather_week[1] + '</div>';
                     document.getElementById('weather_weekly').appendChild(weekly_element);
                 }
             } else {
                 for(let i = 1; i <= 5; i++){
-                    let weekly_element = document.createElement('div');
-                    let weekly_date = (today.getMonth() + 1) + '/' + (today.getDate() + i);
-                    let weather_week = weather_code(weekly_temp_weather[i]);
-                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + weekly_date + weather_week[1] + '</div>';
+                    const weekly_element = document.createElement('div');
+                    const next_day = new Date(today.getFullYear(),(today.getMonth()),(today.getDate() + i) );
+                    let weekly_day = next_day.getDay();
+                    switch(weekly_day){
+                            case 0:
+                                weekly_day = '日';
+                                break;
+                            case 1:
+                                weekly_day = '月';
+                                break;
+                            case 2:
+                                weekly_day = '火';
+                                break;
+                            case 3:
+                                weekly_day = '水';
+                                break;
+                            case 4:
+                                weekly_day = '木';
+                                break;
+                            case 5:
+                                weekly_day = '金';
+                                break;
+                            case 6:
+                                weekly_day = '土';
+                                break;
+                    }
+                    const weather_week = weather_code(weekly_temp_weather[i]);
+                    weekly_element.innerHTML = '<div class="weather_weekly_list">' + (next_day.getMonth() + 1) + '月' + next_day.getDate() + '日（' + weekly_day + '）<br>' + weather_week[1] + '</div>';
                     document.getElementById('weather_weekly').appendChild(weekly_element);
                 }
             }
@@ -105,7 +151,7 @@ function requestAPI() {
 const select_button = document.querySelectorAll('button');
 for(let number = 0; number < select_button.length; number++){
     select_button[number].addEventListener('click', function(e){
-        console.log(e.target.value);
+        console.log('選択された地域：' + e.target.value);
         const select_map = e.target.value;
         switch(select_map){
             case 'maihama':
