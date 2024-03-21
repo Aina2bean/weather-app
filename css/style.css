@@ -30,7 +30,6 @@ main {
     font-style: normal;
     text-align: center;
     background: rgba(255, 255, 255, 0.7);
-    animation: BGwaves 90s ease-in infinite;
 }
 h1 {
     font-family: "RocknRoll One", sans-serif;
@@ -41,15 +40,28 @@ h2 {
     margin: 1rem auto;
 }
 #information_wrap {
-    display: none;
+    display: grid;
+    grid-template-rows: 0fr;
+    height: 0;
     font-size: 1.2rem;
     font-family: "Yomogi", cursive;
     font-weight: 800;
     font-style: normal;
+    transition: 0.5s;
 }
 #information_wrap.open {
     margin-top: 3%;
-    display: block;
+    display: grid;
+    grid-template-rows: 1fr;
+    height: auto;
+}
+#information_wrap > div {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+#information_wrap > div:nth-of-type(2),
+#information_wrap > div:last-of-type {
+    margin-bottom: 0;
 }
 #select_wrap div {
     display: inline-flex;
@@ -73,36 +85,16 @@ h2 {
     cursor: pointer;
     background: radial-gradient(#fff, #ffe346);
 }
+#weather_map_name {
+    font-size: 1.5rem;
+}
 #weather_weekly {
     display: flex;
+    justify-content: center;
 }
 #weather_weekly .weather_weekly_list {
     margin-right: 10px;
     width: calc(100% - 10px);
-}
-
-@keyframes BGwaves {
-    0%, 100% {
-        border-radius: 100% 100% 54% 46%/55% 48% 52% 45%;
-    }
-    14% {
-        border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
-    }
-    28% {
-        border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
-    }
-    42% {
-        border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
-    }
-    56% {
-        border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
-    }
-    70% {
-        border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
-    }
-    84% {
-        border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
-    }
 }
 
 @media screen and (max-width: 640px) {
@@ -132,26 +124,27 @@ h2 {
 /*====================// 天候アイコン //====================*/
 #weather_now .material-symbols-outlined {
     font-size: 5rem;
+    font-weight: 200;
 }
-#weather_now .material-symbols-outlined.sunny{
+.sunny {
     content: 'sunny';
 }
-#weather_now .material-symbols-outlined.partly_cloudy{
+.partly_cloudy {
     content: 'partly_cloudy_day';
 }
-#weather_now .material-symbols-outlined.foggy{
+.foggy {
     content: 'foggy';
 }
-#weather_now .material-symbols-outlined.rainy{
+.rainy {
     content: 'rainy';
 }
-#weather_now .material-symbols-outlined.weather_snowy{
+.weather_snowy {
     content: 'weather_snowy';
 }
-#weather_now .material-symbols-outlined.thunderstorm{
+.thunderstorm {
     content: 'thunderstorm';
 }
-#weather_now .material-symbols-outlined::after {
+.material-symbols-outlined::after {
     display: block;
     font-family: 'Material Icons';
     font-size: 48px;
@@ -164,15 +157,26 @@ h2 {
 /*====================// 天候アイコン //====================*/
 
 /*====================// 気温情報 //====================*/
+#weather_1day__temp_max-min {
+    display: flex;
+    justify-content: center;
+}
 #weather_1day_area #weather_1day__temp_max,
 #weather_1day_area #weather_1day__temp_min {
+    margin: 0 10px;
     font-weight: bold;
     font-size: 30px;
 }
 #weather_1day_area #weather_1day__temp_max {
     color: #ca1114;
 }
+#weather_1day_area #weather_1day__temp_max::after {
+    content: "/";
+    margin-left: 10px;
+    color: #000;
+}
 #weather_1day_area #weather_1day__temp_min {
+    margin-left: 0;
     color: #183087;
 }
 /*====================// 気温情報 //====================*/

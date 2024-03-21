@@ -21,30 +21,32 @@
             <div id="select_wrap">
                 <h2>ご希望の地域を選んでください。</h2>
                 <div>
-                    <button id="maihama" name="map" value="maihama">舞浜</button>
+                    <button id="maihama" name="map" value="舞浜">舞浜</button>
                 </div>
                 <div>
-                    <button id="minatomirai" name="map" value="minatomirai">みなとみらい</button>
+                    <button id="minatomirai" name="map" value="みなとみらい">みなとみらい</button>
                 </div>
                 <div>
-                    <button id="osaka" name="map" value="osaka">大阪</button>
+                    <button id="osaka" name="map" value="大阪">大阪</button>
                 </div>
             </div>
             <div id="information_wrap">
+                <div id="weather_map_name"></div>
                 <div id="weather_now_area">
                     <dl>
                         <dt class="menu_title">本日の天候</dd>
                         <dd>
                             <div id="weather_now">
-                                <span class="material-symbols-outlined"></span>
+                                <div class="weather_name"></div>
+                                <div class="material-symbols-outlined"></div>
                             </div>
                         </dd>
                     </dl>
                 </div>
                 <div id="weather_1day_area">
                     <dl>
-                        <dt class="menu_title">本日の最高気温・最低気温</dt>
-                        <dd>
+                        <dt class="menu_title">本日の最高気温/最低気温</dt>
+                        <dd id="weather_1day__temp_max-min">
                             <div id="weather_1day__temp_max"></div>
                             <div id="weather_1day__temp_min"></div>
                         </dd>
